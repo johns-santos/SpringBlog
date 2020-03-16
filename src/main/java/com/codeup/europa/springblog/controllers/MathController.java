@@ -1,5 +1,4 @@
-package com.codeup.europa.springblog.controllers;
-
+package com.codeup.springblog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,64 +6,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-class MathController {
+public class MathController {
 
-    @GetMapping("/math")
+    @GetMapping("/add/{a}/and/{b}")
     @ResponseBody
-    public String landingPage() {
-        return "Welcome To Math Page";
+    public String add(@PathVariable int a,@PathVariable int b){
+        return ""+(a+b);
     }
 
-
-    @GetMapping("math/add/{number1}/and/{number2}")
+    @GetMapping("/subtract/{a}/from/{b}")
     @ResponseBody
-    public String add(@PathVariable int number1,
-                      @PathVariable int number2) {
-        return number1 + " plus number " + number2 + " equals " + (number1+number2) + "!";
+    public String subtract(@PathVariable int a,@PathVariable int b){
+        return ""+(b-a);
     }
 
-//
-    @GetMapping("math/subtract/{number1}/and/{number2}")
+    @GetMapping("/multiply/{a}/and/{b}")
     @ResponseBody
-    public String sub(@PathVariable int number1,
-                      @PathVariable double number2) {
-        return number1 + " minus number " + number2 + " equals " + (number1-number2) + "!";
-    }
-//
-//
-    @GetMapping("math/multiply/{number1}/and/{number2}")
-    @ResponseBody
-    public String multiply(@PathVariable int number1,
-                           @PathVariable int number2) {
-        return number1 + " multiply by  number " + number2 + " equals " + (number1*number2) + "!";
-    }
-//
-    @GetMapping("math/divide/{number1}/and/{number2}")
-    @ResponseBody
-    public String divide(@PathVariable int number1,
-                         @PathVariable double number2) {
-        return number1 + " divided  by  number " + number2 + " equals " + (number1/number2) + "!";
-    }
-//
-//
-
-
-    @GetMapping("math/multiply2/{number1}/and/{number2}")
-    @ResponseBody
-    public String multiply(@PathVariable double number1,
-                           @PathVariable double number2) {
-        return number1 + " multiply by  number " + number2 + " equals " + (number1*number2) + "!";
+    public String multiply(@PathVariable int a,@PathVariable int b){
+        return ""+(a*b);
     }
 
-
-    @GetMapping("math/multiply3/{a}/and/{b}")
+    @GetMapping("/divide/{a}/by/{b}")
     @ResponseBody
-    public double divide(@PathVariable double a,
-                           @PathVariable double b) {
-        return a/b;
+    public double divide(@PathVariable double a,@PathVariable double b){
+        return (a/b);
     }
-
-
-
 }
-
