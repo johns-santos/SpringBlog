@@ -3,7 +3,7 @@ package com.codeup.europa.springblog.models.javax.persistence;
 import javax.persistence.*;
 
 @Entity
-@Table(name="dogs")
+@Table(name = "dogs")
 public class Dogs {
 
     // PRIMARY KEY ====================== //

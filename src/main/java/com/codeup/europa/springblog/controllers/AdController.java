@@ -1,28 +1,32 @@
 package com.codeup.europa.springblog.controllers;
 
 import com.codeup.europa.springblog.models.Ad;
-import com.codeup.springblog.repositories.AdRepo;
+import com.codeup.europa.springblog.respositories.AdRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
 public class AdController {
 
-    private AdRepo adDao;
+    private final AdRepo adDao;
 
     public AdController(AdRepo adDao) {
         this.adDao = adDao;
     }
 
     @GetMapping("/ads")
-    @ResponseBody
-    public List<Ad> getAllAds() {
-        return adDao.findAll();
+    public String index(Model model) {
+        model.addAttribute("ads", adDao.findAll());
+        return "ads/index";
     }
+
+//    @GetMapping("/ads")
+//    @ResponseBody
+//    public List<Ad> getAllAds() {
+//        return adDao.findAll();
+//    }
 
     @GetMapping("/ads/save")
     @ResponseBody
@@ -50,10 +54,11 @@ public class AdController {
         model.addAttribute("ad", ad);
         return "ads/search";
     }
+}
 
 
-    // No to be used in production - but can be used to test
-    // ======================================================
+// No to be used in production - but can be used to test
+// ======================================================
 
 //    @GetMapping("/ads")
 //    @ResponseBody
@@ -85,4 +90,3 @@ public class AdController {
 // ======================================================
 
 
-}
