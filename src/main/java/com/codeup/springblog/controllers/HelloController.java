@@ -37,8 +37,8 @@ class HelloController {
     }
 
     @GetMapping("/fruit")
-    public String fruit(Model model) {
-        List<String> fruitBasket = new ArrayList<>();
+    public String fruit(Model model){
+        List<String> fruitBasket= new ArrayList<>();
         fruitBasket.add("apple");
         fruitBasket.add("kiwi");
         fruitBasket.add("pear");

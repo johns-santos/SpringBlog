@@ -1,12 +1,11 @@
-package com.codeup.europa.springblog.models;
-
+package com.codeup.springblog.models;
 
 public class Post {
     private long id;
     private String title;
     private String body;
 
-    public Post(long id, String title, String body) {
+    public Post(long id, String title, String body){
         this.id = id;
         this.title = title;
         this.body = body;
@@ -20,11 +19,11 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
+    public String getTitle(){
         return this.title;
     }
 
-    public String getBody() {
+    public String getBody(){
         return this.body;
     }
 
