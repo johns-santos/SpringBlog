@@ -13,10 +13,16 @@ public class AdCategory{
     private String name;
 
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany()
+    @JoinTable(
+            name="categories_ads",
+            joinColumns = {@JoinColumn(name="category_id")},
+            inverseJoinColumns = {@JoinColumn(name="ad_id")}
+    )
+
     private List<Ad> ads;
 
-    public  AdCategory(){
+    public AdCategory() {
     }
 
     public long getId() {
@@ -33,5 +39,13 @@ public class AdCategory{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ad> ads) {
+        this.ads = ads;
     }
 }
