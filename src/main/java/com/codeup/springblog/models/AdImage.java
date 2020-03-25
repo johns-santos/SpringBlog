@@ -1,12 +1,9 @@
 package com.codeup.springblog.models;
 
-import com.codeup.springblog.models.Ad;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="ad_image")
-
+@Table(name="ad_images")
 public class AdImage {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,7 +13,6 @@ public class AdImage {
 
     @ManyToOne
     @JoinColumn(name = "ad_id")
-
     private Ad ad;
 
     public AdImage() {
@@ -46,4 +42,3 @@ public class AdImage {
         this.ad = ad;
     }
 }
-

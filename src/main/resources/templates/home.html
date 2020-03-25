@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header.html :: header"></head>
+<link  rel="stylesheet" href="/templates/CSS/main.css">
+<head th:replace="partials/head :: head('All Posts')">
+
+</head>
 <body>
 
-    <nav th:replace="partials/navbar.html :: navbar"></nav>
-    <h1>This is the home page</h1>
 
-    <p>Hello</p>
+    <nav th:replace="partials/navbar.html :: navbar"></nav>
+
+    <main>
+        <div id="intro" class="view">
+            <div class="mask">
+            </div>
+        </div>
+    </main>
+    <th:block th:replace="partials/scripts :: scripts" />
+
 </body>
 </html>

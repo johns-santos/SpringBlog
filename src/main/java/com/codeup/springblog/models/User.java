@@ -3,10 +3,8 @@ package com.codeup.springblog.models;
 import javax.persistence.*;
 import java.util.List;
 
-// id, username, email, and password.
-
 @Entity
-//@Table(name="users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,12 +20,21 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    public User(){
+    @OneToMany(mappedBy = "user")
+    private List<Ad> ads;
+
+    public User() {
     }
 
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public long getId() {
         return id;
@@ -45,14 +52,6 @@ public class User {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -61,16 +60,27 @@ public class User {
         this.password = password;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Post> getPosts() {
         return posts;
     }
 
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
+    public List<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ad> ads) {
+        this.ads = ads;
+    }
 }
-
-
-

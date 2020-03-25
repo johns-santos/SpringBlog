@@ -4,22 +4,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
-public class AdCategory{
+@Table(name="categories")
+public class AdCategory {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
     private String name;
 
-
+//    @ManyToMany(mappedBy = "categories")
     @ManyToMany()
     @JoinTable(
             name="categories_ads",
             joinColumns = {@JoinColumn(name="category_id")},
             inverseJoinColumns = {@JoinColumn(name="ad_id")}
     )
-
     private List<Ad> ads;
 
     public AdCategory() {
